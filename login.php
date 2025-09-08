@@ -1,3 +1,20 @@
+<?php
+include("connect.php");
+
+if (isset($_POST['login'])) {
+    $email = $_POST['email'];
+    $pass  = $_POST['password'];
+
+    $query  = "SELECT * FROM users WHERE email='$email' AND password='$pass'";
+    $result = mysqli_query($connect, $query);
+
+    if (mysqli_num_rows($result) > 0) {
+        echo "<script>alert('Login Successful!');</script>";
+    } else {
+        echo "<script>alert('Invalid Email or Password');</script>";
+    }
+}
+?>
 <!doctype html>
 <html lang="en">
 
